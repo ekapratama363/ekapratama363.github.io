@@ -1,7 +1,7 @@
 {
   "name": "cv",
   "version": "0.1.0",
-  "private": false,
+  "private": true,
   "homepage": "https://ekapratama363.github.io/ekapratama363.github.io",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.10",
