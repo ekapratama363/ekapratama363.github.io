@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/ekapratama363/ekapratama363.github.io.git/static/css/main.e3a2d9ec.chunk.css",
+    "main.js": "/ekapratama363/ekapratama363.github.io.git/static/js/main.f7f8faab.chunk.js",
+    "main.js.map": "/ekapratama363/ekapratama363.github.io.git/static/js/main.f7f8faab.chunk.js.map",
+    "runtime-main.js": "/ekapratama363/ekapratama363.github.io.git/static/js/runtime-main.2edeffbe.js",
+    "runtime-main.js.map": "/ekapratama363/ekapratama363.github.io.git/static/js/runtime-main.2edeffbe.js.map",
+    "static/css/2.a5497ee8.chunk.css": "/ekapratama363/ekapratama363.github.io.git/static/css/2.a5497ee8.chunk.css",
+    "static/js/2.3d8d210e.chunk.js": "/ekapratama363/ekapratama363.github.io.git/static/js/2.3d8d210e.chunk.js",
+    "static/js/2.3d8d210e.chunk.js.map": "/ekapratama363/ekapratama363.github.io.git/static/js/2.3d8d210e.chunk.js.map",
+    "static/js/3.a912100c.chunk.js": "/ekapratama363/ekapratama363.github.io.git/static/js/3.a912100c.chunk.js",
+    "static/js/3.a912100c.chunk.js.map": "/ekapratama363/ekapratama363.github.io.git/static/js/3.a912100c.chunk.js.map",
+    "index.html": "/ekapratama363/ekapratama363.github.io.git/index.html",
+    "static/css/2.a5497ee8.chunk.css.map": "/ekapratama363/ekapratama363.github.io.git/static/css/2.a5497ee8.chunk.css.map",
+    "static/css/main.e3a2d9ec.chunk.css.map": "/ekapratama363/ekapratama363.github.io.git/static/css/main.e3a2d9ec.chunk.css.map",
+    "static/js/2.3d8d210e.chunk.js.LICENSE.txt": "/ekapratama363/ekapratama363.github.io.git/static/js/2.3d8d210e.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.2edeffbe.js",
+    "static/css/2.a5497ee8.chunk.css",
+    "static/js/2.3d8d210e.chunk.js",
+    "static/css/main.e3a2d9ec.chunk.css",
+    "static/js/main.f7f8faab.chunk.js"
+  ]
+}
