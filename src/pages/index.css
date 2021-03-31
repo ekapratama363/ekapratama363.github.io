@@ -27,3 +27,7 @@
     flex-wrap: wrap;
     align-content: center;
 } */
+
+.ant-modal-footer button {
+    display: flex;
+}
