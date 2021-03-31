@@ -5,7 +5,7 @@ export default class Api {
     constructor(){
       this.api_token = null;
       this.client = null;
-      this.api_url = 'http://localhost/cv-eka/api/v1';        
+      this.api_url = 'https://wjproperty.id/.cv-eka/api/v1/';        
     }
 
     init = ()=>{
