@@ -28,46 +28,6 @@ class Main extends Component {
 
                         <Col xs={24} xl={16}>
                             <Portfolio/>
-                            {/* <Row> */}
-                                {/* <Col xs={24} xl={12} style={{ padding: '15px' }}>
-                                    <Card title="" bordered={false}
-                                        actions={[
-                                            <Button type="primary" onClick={this.showModal}
-                                                style={{ alignContent: 'center' }}>
-                                                Detail
-                                                </Button>
-                                        ]}>
-                                        <img
-                                            style={{ width: '100%' }}
-                                            alt="white-shirt"
-                                            src={
-                                                'https://ekapratama363.github.io/w3images/fsm4.PNG'
-                                            }
-                                        />
-                                        <p style={{ textAlign: 'center', paddingTop: '20px' }}>test</p>
-                                    </Card>
-                                </Col>
-
-                                <Col xs={24} xl={12} style={{ padding: '15px' }}>
-                                    <Card title="" bordered={false}
-                                        actions={[
-                                            <Button type="primary" onClick={this.showModal}
-                                                style={{ alignContent: 'center' }}>
-                                                Detail
-                                                </Button>
-                                        ]}>
-                                        <img
-                                            style={{ width: '100%' }}
-                                            alt="white-shirt"
-                                            src={
-                                                'https://ekapratama363.github.io/w3images/fsm4.PNG'
-                                            }
-                                        />
-                                        <p style={{ textAlign: 'center', paddingTop: '20px' }}>test</p>
-                                    </Card>
-                                </Col> */}
-                            {/* </Row> */}
-
                         </Col>
 
                         <Col xs={24} xl={4} style={{ padding: '15px' }}>

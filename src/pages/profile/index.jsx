@@ -67,7 +67,7 @@ class Profile extends Component {
                                         'borderRadius': '50%',
                                     }} alt="Avatar" />
 
-                                <hr />
+                                {/* <hr /> */}
 
                                 <div style={{ padding: '20px' }}>
                                     <h3>{position}</h3>
