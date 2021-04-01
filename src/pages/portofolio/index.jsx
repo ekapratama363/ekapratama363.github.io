@@ -126,7 +126,11 @@ class Portfolio extends Component {
             <div>
                 {
                     this.state.loading ?
-                        <Card><Skeleton active /></Card> :
+                        <Row>
+                            <Col xs={24} xl={24} style={{ padding: '15px' }}>
+                                <Card><Skeleton active /></Card> 
+                            </Col>
+                        </Row> :
                         <div>
                             <Row>
                                 {this.state.data.map(item => {
