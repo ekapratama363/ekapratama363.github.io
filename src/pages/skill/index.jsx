@@ -65,9 +65,9 @@ class Skill extends Component {
                         <Card><Skeleton active/></Card>:
                         <Card bordered={false}>
                             {
-                                this.state.data.map((item) => {
+                                this.state.data.map((item, key) => {
                                     return (
-                                        <div style={{ paddingBottom: '20px' }}>
+                                        <div key={key} style={{ paddingBottom: '20px' }}>
                                             <p>{item.name}</p>
                                             <Progress percent={item.progress} />
                                         </div>

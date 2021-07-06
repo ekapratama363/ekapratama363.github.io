@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import {
-    Card, Skeleton
+    Card, Skeleton, Image
 } from 'antd';
 import Api from '../../helpers/api';
+import './index.css'
 
 const api = new Api();
 
@@ -49,9 +50,9 @@ class Profile extends Component {
     }
 
     render() {
-        const { name, address, email, phone, position, image_full_url } = this.state.data
+        const { name, address, email, phone, whatsapp_link, position, image_full_url } = this.state.data
         return (
-            <div>
+            <div className="profile-content">
                 {
                     this.state.loading ?
                         <Card><Skeleton active/></Card>:
@@ -60,20 +61,20 @@ class Profile extends Component {
                             <div style={{ 'textAlign': 'center' }}>
                                 <h1>{name}</h1>
 
-                                <img src={image_full_url}
-                                    style={{
+                                <Image 
+                                    style={{ 
                                         'height': '106px',
                                         'width': '106px',
                                         'borderRadius': '50%',
-                                    }} alt="Avatar" />
-
-                                {/* <hr /> */}
+                                    }}
+                                    src={image_full_url}
+                                />
 
                                 <div style={{ padding: '20px' }}>
                                     <h3>{position}</h3>
                                     <h4>{address}</h4>
-                                    <h4>{email}</h4>
-                                    <h4>{phone}</h4>
+                                    <h4><a href={`mailto:${email}`}>{email}</a></h4>
+                                    <h4><a href={whatsapp_link} target="_blank">{phone}</a></h4>
                                 </div>
                             </div>
                         </Card>

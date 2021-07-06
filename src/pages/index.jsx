@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import {
     Layout,
     Row, Col,
-    Card, Button
 } from 'antd';
 import "antd/dist/antd.css";
 import './index.css';

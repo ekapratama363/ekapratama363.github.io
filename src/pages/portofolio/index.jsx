@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import {
     Card, Row, Col, Button, Pagination,
-    Modal, Carousel, Skeleton
+    Modal, Carousel, Skeleton, Image
 } from 'antd';
 import Api from '../../helpers/api';
+import Show from './Show';
 
 const api = new Api();
 
@@ -12,14 +13,15 @@ class Portfolio extends Component {
         super()
         this.state = {
             data: [],
-            dataModal: [],
+            // dataModal: [],
 
             q: '', //query for search
             selectedRowKeys: [],
             pagination: {},
             loading: true,
-            visible: false,
-            showModal: false
+            // visible: false,
+            showModal: false,
+            selectedData: ''
         }
 
     }
@@ -59,44 +61,17 @@ class Portfolio extends Component {
             })
     }
 
-
-    showModal = (id) => {
-        console.log(id)
-        this.setState({ showModal: true })
-
-        api.viewPortfolioImageByPortfolioId(id)
-            .then(response => {
-
-                const data = response.data;
-
-                console.log(data)
-
-                if (response.status === 200) { //OK
-                    this.setState({
-                        loading: false,
-                        dataModal: data
-                    }, () => {
-                        console.log(this.state.dataModal)
-                    })
-                }
-            })
-            .catch(error => {
-                this.setState({ loading: false });
-            })
+    handleOk = (param) => {
+        // console.log('param')
+        this.setState({ showModal: param })
     }
 
-    handleOk = () => {
-        // console.log('show')
-        this.setState({ showModal: false })
-    }
-
-    handleCancel = () => {
-        // console.log('show')
-        this.setState({ showModal: false })
-    }
-
-    onSlideModal = (a, b, c) => {
-        console.log(a, b, c);
+    handleShowModalAndSendId = (param) => {
+        console.log('selectedId', param)
+        this.setState({
+            selectedData: param,
+            showModal: true
+        })
     }
 
     handlePaginationChange = (pagination, filters, sorter) => {
@@ -109,12 +84,8 @@ class Portfolio extends Component {
             console.log(this.state.pagination)
         });
         this.fetch({
-            //   per_page: pagination.pageSize,
             start: pagination,
             offset: pagination,
-            //   sort_field: sorter.field,
-            //   sort_order: sorter.order==='ascend' ? 'asc' : 'desc',
-            //   ...filters,
         });
     }
 
@@ -133,24 +104,23 @@ class Portfolio extends Component {
                         </Row> :
                         <div>
                             <Row>
-                                {this.state.data.map(item => {
+                                {this.state.data.map((item, key) => {
                                     return (
-                                        <Col xs={24} xl={12} style={{ padding: '15px' }}>
+                                        <Col key={key} xs={24} xl={12} style={{ padding: '15px' }}>
                                             <Card title={item.name} bordered={false}
                                                 actions={[
-                                                    <Button type="primary" onClick={() => this.showModal(item.id)}
+                                                    <Button type="primary" onClick={() => this.handleShowModalAndSendId(item.id)}
                                                         style={{ alignContent: 'center' }}>Detail</Button>
                                                 ]}>
-                                                <img
-                                                    style={{ 
-                                                        width: 'auto',
-                                                        maxWidth: '100%',
-                                                        maxHeight: '100%',
-                                                        height: 'auto', 
-                                                    }}
-                                                    alt={item.name}
-                                                    src={item.image_full_url}
-                                                />
+                                                    <Image 
+                                                        style={{ 
+                                                            width: 'auto',
+                                                            maxWidth: '100%',
+                                                            maxHeight: '100%',
+                                                            height: 'auto', 
+                                                        }}
+                                                        src={item.image_full_url}
+                                                    />
                                                 <p style={{ textAlign: 'center', paddingTop: '20px' }}>{item.description}</p>
                                             </Card>
                                         </Col>
@@ -167,28 +137,11 @@ class Portfolio extends Component {
                                         onChange={this.handlePaginationChange} />
                                 </Col>
                             </Row>
-
-                            <Modal visible={this.state.showModal}
-                                style={{ width: "100%", resize: "none" }}
-                                onOk={this.handleOk}
-                                closable={false}
-                                cancelButtonProps={{ style: { display: 'none' } }}>
-                                {
-                                    this.state.loading ?
-                                        <Skeleton /> :
-                                        <Carousel afterChange={this.onSlideModal} autoplay>
-                                            {
-                                                this.state.dataModal ?
-                                                    this.state.dataModal.map((item) => {
-                                                        return (
-                                                            <img src={item.image_full_url} alt={item.image} />
-                                                        )
-                                                    })
-                                                    : ''
-                                            }
-                                        </Carousel>
-                                }
-                            </Modal>
+                            
+                            <Show
+                                showModal={this.state.showModal}
+                                selectedData={this.state.selectedData}
+                                handleOk={this.handleOk}/>
                         </div>
                 }
 
@@ -196,13 +149,5 @@ class Portfolio extends Component {
         )
     }
 }
-
-const contentStyle = {
-    height: '160px',
-    color: '#fff',
-    lineHeight: '160px',
-    textAlign: 'center',
-    background: '#364d79'
-};
 
 export default Portfolio;

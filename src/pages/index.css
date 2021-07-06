@@ -27,6 +27,17 @@
     flex-wrap: wrap;
     align-content: center;
 } */
+.ant-carousel .slick-dots li button {
+    background: #666666;
+    height: 20px;
+    width: 20px;
+    border-radius: 20px;
+    opacity: 0.4;
+}
+.ant-carousel .slick-dots li.slick-active button {
+    opacity: 1;
+    background: #006dd3;
+}
 
 .ant-modal-footer button {
     display: flex;
