@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {
-    Button,
     Card, Progress,
     Skeleton
 } from 'antd';
@@ -14,7 +13,6 @@ class Skill extends Component {
         super()
         this.state = {
             data: [],
-            offset: 1,
 
             q: '', //query for search
             selectedRowKeys: [],
@@ -50,7 +48,7 @@ class Skill extends Component {
                         data: data.data,
                         pagination,
                     }, () => {
-                        console.log('skills', this.state.pagination)
+                        // console.log(this.state.data)
                     })
                 }
             })
@@ -59,18 +57,12 @@ class Skill extends Component {
             })
     }
 
-    loadMore = () => {
-        this.setState((prevState) => ({
-            offset: prevState.offset + 1
-        }), () => this.fetch({ offset: this.state.offset }));
-    };
-
     render() {
         return (
             <div>
                 {
                     this.state.loading ?
-                        <Card><Skeleton active /></Card> :
+                        <Card><Skeleton active/></Card>:
                         <Card bordered={false}>
                             {
                                 this.state.data.map((item, key) => {
@@ -82,18 +74,6 @@ class Skill extends Component {
                                     )
                                 })
                             }
-                            <div className="load-more">
-
-                                {
-                                    this.state.pagination.total > this.state.pagination.pageSize
-                                        ?
-                                        <Button onClick={this.loadMore} type="primary">
-                                            {this.state.loading ? 'Loading...' : 'Load More'}
-                                        </Button>
-                                        :
-                                        null
-                                }
-                            </div>
                         </Card>
                 }
             </div>

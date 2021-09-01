@@ -28,8 +28,8 @@ export default class Api {
         return this.client
     }
 
-    getSkillList = ()=>{
-      return this.init().get(`/skill`);
+    getSkillList = (params)=>{
+      return this.init().get(`/skill`,{params});
     }
 
     getProfileShow = ()=>{
