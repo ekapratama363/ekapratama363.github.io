@@ -21,6 +21,7 @@ class Skill extends Component {
             pagination: {},
             loading: true,
             visible: false,
+            loadingLoadMore: false
         }
 
     }
@@ -32,7 +33,7 @@ class Skill extends Component {
     fetch = (params = {}) => {
         // console.log('params:', params);
         const { q } = this.state
-        this.setState({ loading: true });
+        this.setState({ loading: true, loadingLoadMore: true });
 
         api.getSkillList({ ...params, q })
             .then(response => {
@@ -47,6 +48,7 @@ class Skill extends Component {
                 if (response.status === 200) { //OK
                     this.setState({
                         loading: false,
+                        loadingLoadMore: false,
                         data: data.data,
                         pagination,
                     }, () => {
@@ -88,7 +90,7 @@ class Skill extends Component {
                                     this.state.pagination.total > this.state.pagination.pageSize
                                         ?
                                         <Button onClick={this.loadMore} type="primary">
-                                            {this.state.loading ? 'Loading...' : 'Load More'}
+                                            {this.state.loadingLoadMore ? 'Loading...' : 'Load More'}
                                         </Button>
                                         :
                                         null
