@@ -70,7 +70,7 @@ class Profile extends Component {
                                     src={image_full_url}
                                 />
 
-                                <div style={{ padding: '20px' }}>
+                                <div style={{ padding: '20px', wordWrap: 'break-word', whiteSpace: 'pre-wrap' }}>
                                     <h3>{position}</h3>
                                     <h4>{address}</h4>
                                     <h4><a href={`mailto:${email}`}>{email}</a></h4>
