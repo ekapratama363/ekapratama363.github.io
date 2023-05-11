@@ -40,7 +40,7 @@ const Show = (props) => {
     }
 
     return (
-        <Modal visible={props.showModal}
+        <Modal open={props.showModal}
             style={{ width: "100%", resize: "none" }}
             onOk={handleOk}
             closable={false}
