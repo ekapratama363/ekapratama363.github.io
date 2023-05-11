@@ -12,9 +12,7 @@ import Portfolio from './portofolio/index';
 const { Header, Content, Footer } = Layout;
 
 class Main extends Component {
-
     render() {
-
         return (
             <Layout className="layout">
                 <Header />
@@ -26,7 +24,7 @@ class Main extends Component {
                         </Col>
 
                         <Col xs={24} xl={16}>
-                            <Portfolio/>
+                            <Portfolio />
                         </Col>
 
                         <Col xs={24} xl={4} style={{ padding: '15px' }}>

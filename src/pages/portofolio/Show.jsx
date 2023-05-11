@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState } from 'react'
 import {
-    Modal, Carousel, Skeleton, Image, Spin
+    Modal, Carousel, Image, Spin
 } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
 
@@ -12,31 +12,23 @@ const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 const api = new Api
 
 const Show = (props) => {
-
     const [data, setData] = useState([])
     const [loading, setLoading] = useState(true)
 
-    useEffect(()=> {
-        console.log(props)
-
-        if(props.selectedData) {
+    useEffect(() => {
+        if (props.selectedData) {
             fetch(props.selectedData)
         }
-    },[props.selectedData])
+    }, [props.selectedData])
 
     const handleOk = () => {
         props.handleOk(false)
     }
 
-    const fetch = async(id) => {
-        
-         await api.viewPortfolioImageByPortfolioId(id)
+    const fetch = async (id) => {
+        await api.viewPortfolioImageByPortfolioId(id)
             .then(response => {
-
                 const data = response.data;
-
-                console.log(data)
-
                 if (response.status === 200) { //OK
                     setLoading(false)
                     setData(data)
@@ -53,7 +45,6 @@ const Show = (props) => {
             onOk={handleOk}
             closable={false}
             cancelButtonProps={{ style: { display: 'none' } }}>
-            {/* <Carousel autoplay arrows nextArrow={<ArrowRightOutlined />} prevArrow={<ArrowLeftOutlined/>}> */}
             <Carousel autoplay>
                 {
                     loading

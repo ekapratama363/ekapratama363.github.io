@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {
-    Card, Row, Col, Button, Pagination,
-    Modal, Carousel, Skeleton, Image
+    Card, Row, Col, Button, Pagination, Skeleton, Image
 } from 'antd';
 import Api from '../../helpers/api';
 import Show from './Show';
@@ -19,11 +18,9 @@ class Portfolio extends Component {
             selectedRowKeys: [],
             pagination: {},
             loading: true,
-            // visible: false,
             showModal: false,
             selectedData: ''
         }
-
     }
 
     componentDidMount() {
@@ -31,7 +28,6 @@ class Portfolio extends Component {
     }
 
     fetch = (params = {}) => {
-        // console.log('params:', params);
         const { q } = this.state
         this.setState({ loading: true });
 
@@ -41,7 +37,6 @@ class Portfolio extends Component {
                 const data = response.data;
                 const pagination = { ...this.state.pagination };
 
-                // console.log(data.data);
                 pagination.current = data.offset
                 pagination.total = data.length;
                 pagination.pageSize = parseInt(data.length);
@@ -51,8 +46,6 @@ class Portfolio extends Component {
                         loading: false,
                         data: data.data,
                         pagination,
-                    }, () => {
-                        // console.log(this.state.pagination)
                     })
                 }
             })
@@ -62,19 +55,17 @@ class Portfolio extends Component {
     }
 
     handleOk = (param) => {
-        // console.log('param')
         this.setState({ showModal: param })
     }
 
     handleShowModalAndSendId = (param) => {
-        console.log('selectedId', param)
         this.setState({
             selectedData: param,
             showModal: true
         })
     }
 
-    handlePaginationChange = (pagination, filters, sorter) => {
+    handlePaginationChange = (pagination) => {
         console.log(pagination);
         const pager = { ...this.state.pagination };
         pager.current = pagination;
@@ -91,17 +82,18 @@ class Portfolio extends Component {
 
 
     render() {
-
         const { current, total } = this.state.pagination
         return (
             <div>
                 {
-                    this.state.loading ?
+                    this.state.loading
+                        ?
                         <Row>
                             <Col xs={24} xl={24} style={{ padding: '15px' }}>
-                                <Card><Skeleton active /></Card> 
+                                <Card><Skeleton active /></Card>
                             </Col>
-                        </Row> :
+                        </Row>
+                        :
                         <div>
                             <Row>
                                 {this.state.data.map((item, key) => {
@@ -112,15 +104,15 @@ class Portfolio extends Component {
                                                     <Button type="primary" onClick={() => this.handleShowModalAndSendId(item.id)}
                                                         style={{ alignContent: 'center' }}>Detail</Button>
                                                 ]}>
-                                                    <Image 
-                                                        style={{ 
-                                                            width: 'auto',
-                                                            maxWidth: '100%',
-                                                            maxHeight: '100%',
-                                                            height: 'auto', 
-                                                        }}
-                                                        src={item.image_full_url}
-                                                    />
+                                                <Image
+                                                    style={{
+                                                        width: 'auto',
+                                                        maxWidth: '100%',
+                                                        maxHeight: '100%',
+                                                        height: 'auto',
+                                                    }}
+                                                    src={item.image_full_url}
+                                                />
                                                 <p style={{ textAlign: 'center', paddingTop: '20px' }}>{item.description}</p>
                                             </Card>
                                         </Col>
@@ -137,11 +129,11 @@ class Portfolio extends Component {
                                         onChange={this.handlePaginationChange} />
                                 </Col>
                             </Row>
-                            
+
                             <Show
                                 showModal={this.state.showModal}
                                 selectedData={this.state.selectedData}
-                                handleOk={this.handleOk}/>
+                                handleOk={this.handleOk} />
                         </div>
                 }
 

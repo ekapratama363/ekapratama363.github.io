@@ -16,31 +16,24 @@ class Profile extends Component {
             loading: true,
             visible: false,
         }
-
     }
 
     componentDidMount() {
         this.fetch();
-
-        // console.log(this.state.data)
     }
 
     fetch = (params = {}) => {
-        // console.log('params:', params);
         const { q } = this.state
         this.setState({ loading: true });
 
         api.getProfileShow({ ...params, q })
             .then(response => {
-                // console.log(response.data);
                 const data = response.data;
 
                 if (response.status === 200) { //OK
                     this.setState({
                         loading: false,
                         data: data,
-                    }, () => {
-                        // console.log(this.state.data)
                     })
                 }
             })
@@ -54,15 +47,16 @@ class Profile extends Component {
         return (
             <div className="profile-content">
                 {
-                    this.state.loading ?
-                        <Card><Skeleton active/></Card>:
-
+                    this.state.loading
+                        ?
+                        <Card><Skeleton active /></Card>
+                        :
                         <Card bordered={false}>
                             <div style={{ 'textAlign': 'center' }}>
                                 <h1>{name}</h1>
 
-                                <Image 
-                                    style={{ 
+                                <Image
+                                    style={{
                                         'height': '106px',
                                         'width': '106px',
                                         'borderRadius': '50%',

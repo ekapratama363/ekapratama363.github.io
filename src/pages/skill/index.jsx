@@ -36,7 +36,6 @@ class Skill extends Component {
     }
 
     fetch = (params = {}) => {
-        // console.log('params:', params);
         const { q } = this.state
         this.setState({ loading: true });
 
@@ -45,7 +44,6 @@ class Skill extends Component {
                 const data = response.data;
                 const pagination = { ...this.state.pagination };
 
-                // console.log(data.data);
                 pagination.current = data.start
                 pagination.total = data.recordsTotal;
                 pagination.pageSize = parseInt(data.length);
@@ -55,8 +53,6 @@ class Skill extends Component {
                         loading: false,
                         data: data.data,
                         pagination,
-                    }, () => {
-                        console.log('skills', this.state.pagination)
                     })
                 }
             })
@@ -75,21 +71,22 @@ class Skill extends Component {
         return (
             <div>
                 {
-                    this.state.loading ?
-                        <Card><Skeleton/></Card> :
+                    this.state.loading
+                        ?
+                        <Card><Skeleton /></Card>
+                        :
                         <Card bordered={false}>
                             {
                                 this.state.data.map((item, key) => {
                                     return (
                                         <div key={key} style={{ paddingBottom: '20px' }}>
                                             <p>{item.name}</p>
-                                            <Progress percent={item.progress} />
+                                            <Progress percent={item.progress} showInfo={false} />
                                         </div>
                                     )
                                 })
                             }
                             <div className="load-more">
-
                                 {
                                     this.state.pagination.total > this.state.pagination.pageSize
                                         ?
