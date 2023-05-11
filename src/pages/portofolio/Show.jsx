@@ -9,7 +9,7 @@ import Api from '../../helpers/api'
 
 const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 
-const api = new Api
+const api = new Api()
 
 const Show = (props) => {
     const [data, setData] = useState([])
@@ -42,7 +42,7 @@ const Show = (props) => {
     return (
         <Modal open={props.showModal}
             style={{ width: "100%", resize: "none" }}
-            onOk={handleOk}
+            onOk={() => handleOk()}
             closable={false}
             cancelButtonProps={{ style: { display: 'none' } }}>
             <Carousel autoplay>

@@ -1,5 +1,5 @@
 import { ConfigProvider, theme } from 'antd';
-import React, { Component, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
     Layout,
     Row, Col,
@@ -9,13 +9,24 @@ import Skill from './skill/index'
 import Profile from './profile/index'
 import Portfolio from './portofolio/index';
 
-const { Content, Footer } = Layout;
+const { Content } = Layout;
 
 const Main = () => {
     const [themeStyle, setThemeStyle] = useState({
         icon: '🌚',
         color: 'light'
     })
+
+    useEffect(() => {
+        let getTheme = localStorage.getItem('theme')
+        if (getTheme) {
+            setThemeStyle(JSON.parse(getTheme))
+        }
+    }, [])
+
+    useEffect(() => {
+        localStorage.setItem('theme', JSON.stringify(themeStyle))
+    }, [themeStyle])
 
     const changeTheme = (icon, color) => {
         setThemeStyle({
@@ -26,7 +37,7 @@ const Main = () => {
     return (
         <ConfigProvider
             theme={{
-                algorithm: themeStyle.color == 'dark' ? theme.darkAlgorithm : theme.defaultAlgorithm,
+                algorithm: themeStyle.color === 'dark' ? theme.darkAlgorithm : theme.defaultAlgorithm,
             }}
         >
             <Layout className="layout">

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-    Card, Skeleton, Image, Switch, Space, theme
+    Card, Skeleton, Image, Switch, Space
 } from 'antd';
 import Api from '../../helpers/api';
 import './index.css'
@@ -15,10 +15,6 @@ class Profile extends Component {
 
             loading: true,
             visible: false,
-            theme: {
-                icon: '🌚',
-                color: 'dark'
-            }
         }
     }
 
@@ -53,6 +49,9 @@ class Profile extends Component {
         }
 
         this.props.changeTheme('🌝', 'dark')
+        this.setState({
+            checkedDark: !checked
+        })
     };
 
     render() {
@@ -81,11 +80,11 @@ class Profile extends Component {
                                     <h3>{position}</h3>
                                     <h4>{address}</h4>
                                     <h4><a href={`mailto:${email}`}>{email}</a></h4>
-                                    <h4><a href={whatsapp_link} target="_blank">{phone}</a></h4>
+                                    <h4><a href={whatsapp_link} target="_blank" rel="noreferrer">{phone}</a></h4>
 
                                     <Space>
                                         <span>{this.props.themeStyle.icon}</span>
-                                        <Switch size="small" onChange={this.changeTheme} />
+                                        <Switch size="small" checked={this.props.themeStyle.color === 'dark' ? true : false} onChange={this.changeTheme} />
                                     </Space>
                                 </div>
                             </div>
