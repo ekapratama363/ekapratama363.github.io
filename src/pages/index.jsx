@@ -9,7 +9,7 @@ import Skill from './skill/index'
 import Profile from './profile/index'
 import Portfolio from './portofolio/index';
 
-const { Content } = Layout;
+const { Content, Footer } = Layout;
 
 const Main = () => {
     const [themeStyle, setThemeStyle] = useState({
@@ -56,6 +56,7 @@ const Main = () => {
                         </Col>
                     </Row>
                 </Content>
+                <Footer style={{textAlign: 'center'}}>© Eka Pratama</Footer>
             </Layout>
         </ConfigProvider>
     );
